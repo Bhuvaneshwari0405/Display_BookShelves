@@ -1,35 +1,31 @@
 package testcases;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 import browserImplementation.BrowserDriver;
 
 public class BaseTest {
 	WebDriver driver;
-	BrowserDriver br;
-	
-	
-	
+	BrowserDriver br;	
 	//Launch Browser and Open the application
 	@BeforeTest
-	public void setUp() throws IOException, InterruptedException {
-		Scanner sc = new Scanner(System.in);
-		
-		System.out.print("Choose the Browser Type:\nChrome - 1\nEdge - 2\nEnter the value: ");
-		int browserType = sc.nextInt();
-		sc.close();
-		
+	public void setUp() throws IOException, InterruptedException {		
 		br = new BrowserDriver();
-		driver = br.Launch_Browser(browserType);	
+		driver = br.launch_Browser();	
+	}
+	
+	@Test
+	public void testCase() {
+		System.out.println("Testss......");
 	}
 	
 	@AfterTest
-	public void close_Browser() {
-		br.quit_Browser();
+	public void quit_Browser() {
+		br.close_Browser();
 	}
 }
