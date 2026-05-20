@@ -29,14 +29,23 @@ public class StudyChairPage {
 	}
 	
 	//Returns the URL of the study chair page
-	public void getStudyChairsURL() throws InterruptedException {
+	public String getStudyChairsURL() throws InterruptedException {
 		wait.until(ExpectedConditions.elementToBeClickable(category)).click();
 		Thread.sleep(2000);
 		wait.until(ExpectedConditions.elementToBeClickable(studyChair)).click();
+		String URL = driver.getCurrentUrl();
+		return URL;
 	}
 	
+	//Returns the title of the Study Chairs Page
+	public String verifyTitleOfStudyChairs() {
+		String title = driver.getTitle();
+		return title;
+	}
+	
+	
 	//Sorting the study chairs using popularity
-	public void sortByPopularity() throws InterruptedException {
+	public String sortByPopularity() throws InterruptedException {
 		
 		//located and click all filters
 		wait.until(ExpectedConditions.elementToBeClickable(sortDropdown)).click();
@@ -50,7 +59,8 @@ public class StudyChairPage {
 		wait.until(ExpectedConditions.elementToBeClickable(popularityOption)).click();
 		Thread.sleep(2000);
 		
-	
+		String URL = driver.getCurrentUrl();
+		return URL;
 	}
 	
 	//Display top 3 study chairs
@@ -71,6 +81,7 @@ public class StudyChairPage {
 		}
 		return result;
 	}
+	
 	
 	
 }

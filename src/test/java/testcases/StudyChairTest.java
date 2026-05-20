@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -25,6 +26,7 @@ public class StudyChairTest {
 	WebDriverWait wait;
 	ExcelUtils ex;
 	
+	//Opens the browser and the webpage is opened
 	@BeforeTest
 	public void setUp() throws InterruptedException, IOException {
 		br = new BrowserDriver();
@@ -38,19 +40,36 @@ public class StudyChairTest {
 		sc = new StudyChairPage(driver, wait);
 	}
 	
+	//The verification of study chairs page is opened
 	@Test
 	public void testCase1() throws InterruptedException {
-		sc.getStudyChairsURL();
-		//System.out.println(studyChairPageURL);
-	}
-
-	@Test
-	public void testCase2() throws InterruptedException {
-		sc.sortByPopularity();	
+		String actualURL = sc.getStudyChairsURL();
+		String expectedURL = "https://www.urbanladder.com/collection/study-chairs";
+		System.out.println("The Study chair URL: " + actualURL);
+		Assert.assertEquals(actualURL, expectedURL);
 	}
 	
+	//Verifying the title of Study chair webpage
 	@Test
-	public void testCase3() throws IOException {
+	public void testCase2() {
+		String title = sc.verifyTitleOfStudyChairs();
+		String expectedTitle = "Buy Study Chairs Online at Upto 70% Off in India";
+		System.out.println("Actual Title: " + title);
+		Assert.assertEquals(title, expectedTitle);
+	}
+
+	//Sorting the study chairs based on popularity
+	@Test
+	public void testCase3() throws InterruptedException {
+		String actualURL = sc.sortByPopularity();
+		String expectedURL = "https://www.urbanladder.com/collection/study-chairs?sortOn=popular";
+		System.out.println("The Study chair URL: " + actualURL);
+		Assert.assertEquals(actualURL, expectedURL);
+	}
+	
+	//Returns the top 3 study chairs
+	@Test
+	public void testCase4() throws IOException {
 		List<String> output = new ArrayList<>();
 		output = sc.getTop3Products();
 		ex = new ExcelUtils();
@@ -58,6 +77,7 @@ public class StudyChairTest {
 		
 	}
 	
+	//The browser is closed
 	@AfterTest
 	public void tearDown() {
 		br.close_Browser();
