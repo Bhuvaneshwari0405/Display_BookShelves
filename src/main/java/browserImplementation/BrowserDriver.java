@@ -11,25 +11,16 @@ public class BrowserDriver {
 	
 	//Launch the browser based on user input
 	public WebDriver launch_Browser() {
-		Scanner sc = new Scanner(System.in);
-        System.out.println("Select Browser:");
-        System.out.println("1. Chrome");
-        System.out.println("2. Edge");
-        System.out.println("Enter your choice (1 or 2) : ");
-        int choice = sc.nextInt();
-        sc.close();
-		switch(choice) {
-		case 1:
-			driver = launchChrome();
-			break;
-		case 2:
-			driver = launchEdge();
-			break;
-		default:
-			System.out.println("Invalid choice.Launching Chrome as default");
-			driver = launchChrome();
-			break;
-		}
+		/*
+		 * Scanner sc = new Scanner(System.in); System.out.println("Select Browser:");
+		 * System.out.println("1. Chrome"); System.out.println("2. Edge");
+		 * System.out.println("Enter your choice (1 or 2) : "); int choice =
+		 * sc.nextInt(); sc.close(); switch(choice) { case 1: driver = launchChrome();
+		 * break; case 2: driver = launchEdge(); break; default:
+		 * System.out.println("Invalid choice.Launching Chrome as default"); driver =
+		 * launchChrome(); break; }
+		 */
+		driver = new ChromeDriver();
 		return driver;
 	}
 	

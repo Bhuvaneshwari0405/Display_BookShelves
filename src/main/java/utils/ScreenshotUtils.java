@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 
 public class ScreenshotUtils {
 	//Captures the screenshots
-	public static String captureScreenshot(WebDriver driver, String testName) {
+	public String captureScreenshot(WebDriver driver, String testName) {
         TakesScreenshot ts = (TakesScreenshot) driver;
         File src = ts.getScreenshotAs(OutputType.FILE);
 

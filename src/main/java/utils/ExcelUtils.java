@@ -11,7 +11,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelUtils {
 
-	public void writeData(List<String>data, String fileName) throws IOException {
+	public void writeData(List<String>data, String path) throws IOException {
 		
 		Workbook wb = new XSSFWorkbook();
 		Sheet sheet = wb.createSheet("Results");
@@ -29,7 +29,7 @@ public class ExcelUtils {
 		sheet.autoSizeColumn(0);
 		sheet.autoSizeColumn(1);
 		
-		FileOutputStream fos = new FileOutputStream(fileName);
+		FileOutputStream fos = new FileOutputStream(path);
 		wb.write(fos);
 		wb.close();
 		fos.close();
