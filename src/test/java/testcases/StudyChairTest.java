@@ -40,8 +40,7 @@ public class StudyChairTest {
 		driver.manage().window().maximize();
 		Thread.sleep(3000);		
 		or = new ObjectReader();
-		driver.get(or.get_baseUrl());
-		Thread.sleep(3000);		
+		driver.get(or.get_baseUrl());	
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		extent = new ExtentReports();
 		ExtentSparkReporter spark = new ExtentSparkReporter("target/StudyChairReport.html");
